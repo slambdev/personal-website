@@ -112,5 +112,5 @@ export const resume: Resume = {
         `AWS`,
     ],
     interests: [],
-    tldr: `I'm a heads-down get sh*t done engineer. It doesn't matter where in the stack I work. I take pride in taking a project from ideation to implementation to production.`,
+    tldr: `I'm a heads-down get sh*t done engineer. It doesn't matter where in the stack I work. I take pride in taking a project from ideation to implementation to production.\n\nI enjoy working with designers and product managers to implement the best user experience possible.`,
 };
