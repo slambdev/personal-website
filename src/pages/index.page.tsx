@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { styled, SxProps, Theme } from '@mui/material/styles';
-import { breakpointDown, gap, halfGap, hideScrollBars, sx } from '../sx';
+import { breakpointDown, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
 import { ReactNode } from 'react';
 import { resume } from '../data';
 import { Experience } from '../components/experience';
@@ -11,6 +11,8 @@ import Chip from '@mui/material/Chip';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Button from '@mui/material/Button';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { Place } from '@mui/icons-material';
+import { useTheme } from '@emotion/react';
 
 export type GridArea = `contact` | `experience` | `education` | `interests`;
 
@@ -120,15 +122,18 @@ const BottomGridItem = styled(Box)(
 );
 
 export default function Home() {
+  const theme = useTheme();
+
   return (
     <Container fixed>
       <Box sx={{ display: `flex`, justifyContent: `space-between` }}>
         <Box>
             <Typography variant="h1">Shannen Lambdin</Typography>
-            <Box sx={{ display: `flex` }}>
-              <Typography variant="h3">Senior Fullstack Engineer</Typography>
-              <Typography variant="h3" sx={{ paddingX: halfGap }}>|</Typography>
-              <Typography variant="h3">Raleigh, NC</Typography>
+            <Box sx={[{ display: `flex`, flexDirection: `column` }]}>
+              <Typography variant="h3" sx={{ paddingRight: halfGap }}>Senior Fullstack Engineer</Typography>
+              <Box sx={{ display: `flex`, paddingBottom: fourthGap, alignItems: `center` }}>
+                <Place fontSize='small' /> <Typography variant="h4">Raleigh, NC</Typography>
+              </Box>
             </Box>
         </Box>
         <Box sx={{ display: `flex`, flexDirection: `column`, justifyContent: `space-evenly` }}>
