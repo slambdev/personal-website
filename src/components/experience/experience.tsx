@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material/styles';
 import { fourthGap, gap, halfGap, sx } from '../../sx';
 import Image from 'next/image';
-import { useTheme } from '@emotion/react';
 
 import _ from 'lodash';
 import { Divider } from '../divider';
@@ -83,7 +82,7 @@ export const Experience = ({
 
                 <Box sx={{ display: `flex`, flexWrap: `wrap`}}>
                     {sortedTechnologies.map(tech => (
-                        <Chip label={tech} />
+                        <Chip label={tech} sx={{ marginRight: halfGap, marginBottom: halfGap }} />
                     ))}
                 </Box>
             </ExperienceBox>

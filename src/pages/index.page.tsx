@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { styled, SxProps, Theme } from '@mui/material/styles';
-import { gap, halfGap, hideScrollBars, sx } from '../sx';
+import { breakpointDown, gap, halfGap, hideScrollBars, sx } from '../sx';
 import { ReactNode } from 'react';
 import { resume } from '../data';
 import { Experience } from '../components/experience';
@@ -58,7 +58,7 @@ export const GridItem = ({ gridArea, ...props }: GridItemProps) => (
           
 const SkillsGridItem = styled(Box)(
   sx([
-    (theme) => ({
+    {
       display: `flex`,
       flexDirection: `column`,
       gridColumnStart: 1,
@@ -66,6 +66,12 @@ const SkillsGridItem = styled(Box)(
       gridRowStart: 1,
       gridRowEnd: 10,
       padding: gap,
+    },
+    breakpointDown(`md`, {
+      gridColumnStart: 1,
+      gridColumnEnd: 12,
+      gridRowStart: 1,
+      gridRowEnd: 3,
     }),
   ]),
 );
@@ -80,8 +86,18 @@ const ExperienceGridItem = styled(Box)(
       gridRowStart: 1,
       gridRowEnd: 10,
       padding: gap,
-      borderLeft: `1px solid ${theme.palette.grey[200]}`,
+      borderLeft: `1px solid`,
+      borderColor: theme.palette.grey[200],
     }),
+    breakpointDown(`md`, (theme) => ({
+      gridColumnStart: 1,
+      gridColumnEnd: 12,
+      gridRowStart: 3,
+      gridRowEnd: 10,
+      borderLeft: `none`,
+      borderTop: `1px solid`,
+      borderColor: theme.palette.grey[200],
+    })),
   ]),
 );
 
@@ -114,8 +130,6 @@ export default function Home() {
               <Typography variant="h3" sx={{ paddingX: halfGap }}>|</Typography>
               <Typography variant="h3">Raleigh, NC</Typography>
             </Box>
-            
-            {/* <Typography variant="subtitle1">Raleigh, NC</Typography> */}
         </Box>
         <Box sx={{ display: `flex`, flexDirection: `column`, justifyContent: `space-evenly` }}>
             <Chip clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
@@ -128,12 +142,13 @@ export default function Home() {
 
       <GridRoot>
         <SkillsGridItem>
-        <Typography variant="h3">Who I am & What I do</Typography>
-        <Typography variant="subtitle1" sx={{ paddingBottom: gap }}>{resume.tldr}</Typography>
+          <Typography variant="h3">Who I am & What I do</Typography>
+          <Typography variant="subtitle1" sx={{ paddingBottom: gap }}>{resume.tldr}</Typography>
 
-        <Typography variant="h3">Education</Typography>
+          <Typography variant="h3">Education</Typography>
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.school} </Typography>
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.program} </Typography>
+          
           {resume.education.degrees.map(degree => (
               <Typography variant="subtitle1">{degree.degree} in {degree.study}</Typography>
           ))}
