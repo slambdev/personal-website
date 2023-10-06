@@ -8,6 +8,7 @@ export interface Experience {
     technologies: string[],
     team?: string,
     link?: string,
+    callouts: string[],
 }
 
 export interface Interest {

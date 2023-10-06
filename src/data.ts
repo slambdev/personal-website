@@ -14,6 +14,9 @@ export const resume: Resume = {
                 `NodeJS`, 
                 `Typescript`, `SQL`, `Prisma`, `React`, `NextJS`, `NestJS`, `Apollo`, `GraphQL`, `Unreal`, `GitHub Actions`,
             ],
+            callouts: [
+                `2nd top contributor within a month of joining the team`
+            ],
         },
         {
             company: `IBM`,
@@ -27,6 +30,11 @@ export const resume: Resume = {
             ],
             team: `ConveyorAI`,
             link: `https://conveyorai.com/`,
+            callouts: [
+                `Top contributor of the codebase`,
+                `Conducted user research`,
+                `Maintained high quality `
+            ],
         },
         {
             company: `IBM`,
@@ -39,6 +47,12 @@ export const resume: Resume = {
                 `Typescript`, `MongoDB`, `Redis`, `Bolt`, `NewRelic`, `LogDNA`, `Docker`, `Kubernetes`, `Watson Assistant`, `SQL Query`, `Cloud Object Storage (COS)`, `React`, `Travis`, `GitHub Actions`, `Artifactory`,
             ],
             team: `Powerups@IBM`,
+            callouts: [
+                `Top contributor of the codebase`,
+                `Acting project manager and managed the backlog`,
+                `Lead team meetings like retrospectives, team health checks, and post-mortems`,
+                `Instrumented monitoring and alerting with various third party tools`
+            ],
         },
         {
             company: `IBM`,
@@ -51,6 +65,9 @@ export const resume: Resume = {
                 `NodeJS`, `RabbitMQ`, `Redis`, `Seneca`, `Botkit`, `Slapp`, `Cloudant`, `Amazon S3`, `Travis`, `Docker`,
             ],
             team: `Slack@IBM`,
+            callouts: [
+
+            ],
         },
         {
             company: `Hudl`,
@@ -64,6 +81,9 @@ export const resume: Resume = {
             ],
             team: `Community`,
             link: `https://www.hudl.com/`,
+            callouts: [
+
+            ],
         },
         {
             company: `IBM`,
@@ -76,6 +96,10 @@ export const resume: Resume = {
                 `Java`, `Angular`, `CSS`, `CloudantDB`,
             ],
             team: `Extreme Blue`,
+            callouts: [
+                `Owned the design, implementation, and deployment of the website`,
+                `Used design thinking to identify user personas and design an appropriate solution`,
+            ],
         },
     ],
     education: {
@@ -112,5 +136,5 @@ export const resume: Resume = {
         `AWS`,
     ],
     interests: [],
-    tldr: `I'm a heads-down get sh*t done engineer. It doesn't matter where in the stack I work. I take pride in taking a project from ideation to implementation to production.\n\nI enjoy working with designers and product managers to implement the best user experience possible.`,
+    tldr: `I'm a heads-down get sh*t done engineer. I enjoy working with designers and product managers to implement the best user experience possible.`,
 };

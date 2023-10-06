@@ -1,14 +1,16 @@
 import { Experience as ExperienceType } from '../../types/resume';
-import { Card, Chip as MuiChip, styled, Theme, Typography } from '@mui/material';
+import { Card, Chip as MuiChip, ListItem, ListItemIcon, ListItemText, styled, Theme, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material/styles';
-import { fourthGap, gap, halfGap, sx } from '../../sx';
+import { breakpointDown, fourthGap, gap, halfGap, sx } from '../../sx';
 import Image from 'next/image';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 
 import _ from 'lodash';
 import { Divider } from '../divider';
 import { Link } from '../link';
+import List from '@mui/material/List';
 
 interface ExperienceProps {
   experience: ExperienceType;
@@ -34,16 +36,29 @@ const ExperienceBox = styled(Card)(
       ]),
     );
 
-const ExperienceHeader = styled(Box)({
-    display: `flex`,
-    justifyContent: `space-between`,
-    width: `100%`,
-});
+const ExperienceHeader = styled(Box)(sx([
+    {
+        display: `flex`,
+        justifyContent: `space-between`,
+        width: `100%`,
+    },
+    breakpointDown(`sm`, {
+        flexDirection: `column`,
+    }),
+]));
 
 const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const formatDate = (date: Date) => {
     return `${month[date.getMonth()]} ${date.getFullYear()}`;
 }
+
+const StyledList = styled(List)({
+
+});
+
+const StyledListItem = styled(ListItem)({
+
+});
 
 const Chip = styled(MuiChip)(sx([
     (theme) => ({
@@ -88,12 +103,19 @@ export const Experience = ({
                         <OpenInNewIcon fontSize='small' />
                     </Link>}
                 </Box>
-                <Typography variant="h5" sx={{ paddingRight: gap }}>{`${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`}</Typography>
-                
+                <Typography variant="h5" sx={{ paddingX: gap }}>{`${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`}</Typography>
             </ExperienceHeader>
             <ExperienceBox>
                 <Typography variant="h3" sx={{ paddingBottom: halfGap }}>{experience.role}</Typography>
                 <Typography sx={{ paddingBottom: halfGap }}>{experience.description}</Typography>
+
+                <List sx={{ }}>
+                    {experience.callouts.map(callout => (
+                        <ListItem sx={{ paddingY: 0, display: `list-item`, paddingLeft: 0, marginLeft: gap }}>
+                            <Typography variant='subtitle1'>{callout}</Typography>
+                        </ListItem>
+                    ))}
+                </List>
 
                 <Box sx={{ display: `flex`, flexWrap: `wrap`}}>
                     {sortedTechnologies.map(tech => (
