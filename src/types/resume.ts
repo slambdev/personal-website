@@ -7,6 +7,7 @@ export interface Experience {
     logoPath: string,
     technologies: string[],
     team?: string,
+    link?: string,
 }
 
 export interface Interest {

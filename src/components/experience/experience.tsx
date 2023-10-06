@@ -4,9 +4,11 @@ import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material/styles';
 import { fourthGap, gap, halfGap, sx } from '../../sx';
 import Image from 'next/image';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 import _ from 'lodash';
 import { Divider } from '../divider';
+import { Link } from '../link';
 
 interface ExperienceProps {
   experience: ExperienceType;
@@ -73,8 +75,21 @@ export const Experience = ({
         />
         <Box sx={{ width: `100%`}}>
             <ExperienceHeader>
-                <Typography variant="h5" sx={{ paddingLeft: gap }}>{experience.team ? `${experience.company} - ${experience.team}` : `${experience.company}`}</Typography>
+                <Box sx={{ display: `flex`, alignItems: `center` }}>
+                    <Typography variant="h5" sx={{ paddingLeft: gap, paddingRight: fourthGap }}>{experience.team ? `${experience.company} - ${experience.team}` : `${experience.company}`}</Typography>
+                    { experience.link && 
+                      <Link
+                      href={experience.link}
+                      aria-label={experience.link}
+                      target="_blank"
+                      passHref
+                      sx={{ display: `flex`}}
+                    >
+                        <OpenInNewIcon fontSize='small' />
+                    </Link>}
+                </Box>
                 <Typography variant="h5" sx={{ paddingRight: gap }}>{`${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`}</Typography>
+                
             </ExperienceHeader>
             <ExperienceBox>
                 <Typography variant="h3" sx={{ paddingBottom: halfGap }}>{experience.role}</Typography>

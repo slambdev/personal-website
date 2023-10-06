@@ -4,6 +4,7 @@ export const resume: Resume = {
     experiences: [
         {
             company: `Showrunner`,
+            link: `https://showrunner.tech/`,
             description: `Built an integrated platform to help studios coordinate and manage their physical and virtual sets.`,
             role: `Senior Fullstack Engineer`,
             startDate: new Date(2023, 1, 1),
@@ -25,6 +26,7 @@ export const resume: Resume = {
                 `NodeJS`, `Typescript`, `Postgres`, `gRPC`, `Terraform`, `AWS EC2`, `React`, `Mobx`, `Docker`,
             ],
             team: `ConveyorAI`,
+            link: `https://conveyorai.com/`,
         },
         {
             company: `IBM`,
@@ -61,6 +63,7 @@ export const resume: Resume = {
                 `C#`, `.Net`, `CSS`, `React`, `Swift`,
             ],
             team: `Community`,
+            link: `https://www.hudl.com/`,
         },
         {
             company: `IBM`,
