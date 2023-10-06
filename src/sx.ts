@@ -14,12 +14,6 @@ export const sx =
 
 export const gap = 3;
 export const halfGap = gap / 2;
-export const fourthGap = gap / 4;
-export const headerGutterTop = [2, 3, 3, 3];
-export const sectionGuttersY = [2, 3, 3, 3];
-
-export const pageBgGradient = ({ palette: { background } }: Theme) =>
-  `${background.default} linear-gradient(to bottom right, ${background.defaultLeft} 0%, ${background.defaultRight} 50%, ${background.defaultRight} 100%) no-repeat padding-box`;
 
 export const breakpointHelper =
   (

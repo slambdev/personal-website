@@ -115,7 +115,7 @@ export const theme = createTheme({
     mode: `light`,
     primary: {
       light: `#06347B`,
-      main: `#fec65c`,
+      main: common.black,
       dark: `#2B304D`,
       contrastText: common.white,
     },
@@ -204,6 +204,7 @@ theme.typography = {
   },
   button: {
     ...theme.typography.button,
+    textTransform: `unset`,
     fontSize: `1rem`,
     fontWeight: `bold`,
     [theme.breakpoints.up(`lg`)]: {

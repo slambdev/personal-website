@@ -1,36 +1,24 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { styled, SxProps, Theme } from '@mui/material/styles';
-import { gap, halfGap, headerGutterTop, hideScrollBars, sectionGuttersY, sx } from '../sx';
+import { gap, halfGap, hideScrollBars, sx } from '../sx';
 import { ReactNode } from 'react';
 import { resume } from '../data';
 import { Experience } from '../components/experience';
 import { Divider } from '../components/divider';
 import Container from '@mui/material/Container';
 import Chip from '@mui/material/Chip';
-import Place from '@mui/icons-material/Place';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Button from '@mui/material/Button';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 export type GridArea = `contact` | `experience` | `education` | `interests`;
-
-const logoSize = [`1.5rem`, `1.5rem`, `1.5rem`, `1.75rem`, `1.75rem`];
-
-
-export const headerSize = (theme: Theme) =>
-  sectionGuttersY.map(
-    (gutter, index) =>
-      `calc(${theme.spacing(gutter + headerGutterTop[index])} + ${
-        logoSize[index]
-      })`,
-  );
 
 export const GridRoot = styled(Box)(
   sx([
     (theme) => ({
       height: `100vh`,
       maxHeight: `-webkit-fill-available`, // prevents overflow on iOS Safari
-      // px: gap,
-      gap,
       display: `grid`,
       gridTemplateAreas: `
         'contact'
@@ -76,7 +64,7 @@ const SkillsGridItem = styled(Box)(
       gridColumnStart: 1,
       gridColumnEnd: 3,
       gridRowStart: 1,
-      gridRowEnd: 12,
+      gridRowEnd: 10,
       padding: gap,
     }),
   ]),
@@ -90,9 +78,27 @@ const ExperienceGridItem = styled(Box)(
       gridColumnStart: 3,
       gridColumnEnd: 10,
       gridRowStart: 1,
-      gridRowEnd: 12,
+      gridRowEnd: 10,
       padding: gap,
       borderLeft: `1px solid ${theme.palette.grey[200]}`,
+    }),
+  ]),
+);
+
+const BottomGridItem = styled(Box)(
+  sx([
+    (theme) => ({
+      display: `flex`,
+      flexDirection: `column`,
+      alignItems: `center`,
+      gridColumnStart: 1,
+      gridColumnEnd: 12,
+      gridRowStart: 10,
+      gridRowEnd: 12,
+      paddingY: gap * 5,
+      paddingX: gap,
+      borderTop: `1px solid ${theme.palette.grey[200]}`,
+      textAlign: `center`,
     }),
   ]),
 );
@@ -103,10 +109,16 @@ export default function Home() {
       <Box sx={{ display: `flex`, justifyContent: `space-between` }}>
         <Box>
             <Typography variant="h1">Shannen Lambdin</Typography>
-            <Typography variant="h3" sx={{ paddingBottom: gap }}>Senior Fullstack Engineer</Typography>
+            <Box sx={{ display: `flex` }}>
+              <Typography variant="h3">Senior Fullstack Engineer</Typography>
+              <Typography variant="h3" sx={{ paddingX: halfGap }}>|</Typography>
+              <Typography variant="h3">Raleigh, NC</Typography>
+            </Box>
+            
+            {/* <Typography variant="subtitle1">Raleigh, NC</Typography> */}
         </Box>
         <Box sx={{ display: `flex`, flexDirection: `column`, justifyContent: `space-evenly` }}>
-            <Chip icon={<Place />} label="Raleigh, NC" />
+            <Chip clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
             <Chip clickable icon={<LinkedInIcon />} label="LinkedIn" component="a" href="https://www.linkedin.com/in/shannen-lambdin-90313850/" />
         </Box>
       </Box>
@@ -120,10 +132,10 @@ export default function Home() {
         <Typography variant="subtitle1" sx={{ paddingBottom: gap }}>{resume.tldr}</Typography>
 
         <Typography variant="h3">Education</Typography>
-          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap }}>{resume.education.school} </Typography>
-          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap }}>{resume.education.program} </Typography>
+          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.school} </Typography>
+          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.program} </Typography>
           {resume.education.degrees.map(degree => (
-              <Typography variant="subtitle1" sx={{ fontWeight: `bold` }}>{degree.degree} in {degree.study}</Typography>
+              <Typography variant="subtitle1">{degree.degree} in {degree.study}</Typography>
           ))}
         </SkillsGridItem>
 
@@ -134,6 +146,13 @@ export default function Home() {
             <Experience experience={experience} />
           ))}
         </ExperienceGridItem>
+
+        <BottomGridItem>
+          <Typography variant="h2" sx={{paddingBottom: gap}}>Congratulations! You scrolled all the way to the bottom!</Typography>
+          <Typography variant="h4" sx={{paddingBottom: gap}}>This must  mean you're interested in stopping and having a chat. </Typography>
+          
+          <Button variant='outlined' color='primary' size='small' startIcon={<SentimentVerySatisfiedIcon />} href='mailto:slambdin123@gmail.com'>Contact me</Button>
+        </BottomGridItem>
       </GridRoot>
     </Container>
       
