@@ -1,35 +1,33 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { styled, SxProps, Theme } from '@mui/material/styles';
-import { breakpointDown, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
-import { ReactNode } from 'react';
-import { resume } from '../data';
-import { Experience } from '../components/experience';
-import { Divider } from '../components/divider';
-import Container from '@mui/material/Container';
-import Chip from '@mui/material/Chip';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Button from '@mui/material/Button';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { Place } from '@mui/icons-material';
-import { useTheme } from '@emotion/react';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Container from '@mui/material/Container';
+import { styled, SxProps, Theme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import { ReactNode } from 'react';
+
+import { Divider } from '../components/divider';
+import { Experience } from '../components/experience';
+import { resume } from '../data';
+import { breakpointDown, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
 
 export type GridArea = `contact` | `experience` | `education` | `interests`;
 
 export const GridRoot = styled(Box)(
-  sx([
-    (theme) => ({
-      height: `100vh`,
-      maxHeight: `-webkit-fill-available`, // prevents overflow on iOS Safari
-      display: `grid`,
-      gridTemplateAreas: `
-        'contact'
-        'experience'
-      `,
-      gridTemplateColumns: `auto`,
-      gridTemplateRows: `auto`,
-    }),
-  ]),
+  sx([{
+    height: `100vh`,
+    maxHeight: `-webkit-fill-available`, // prevents overflow on iOS Safari
+    display: `grid`,
+    gridTemplateAreas: `
+      'contact'
+      'experience'
+    `,
+    gridTemplateColumns: `auto`,
+    gridTemplateRows: `auto`,
+  }]),
 );
 
 const StyledGridItem = styled(Box, {
@@ -122,8 +120,6 @@ const BottomGridItem = styled(Box)(
 );
 
 export default function Home() {
-  const theme = useTheme();
-
   return (
     <Container fixed>
       <Box sx={{ display: `flex`, justifyContent: `space-between` }}>
@@ -154,16 +150,16 @@ export default function Home() {
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.school} </Typography>
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.program} </Typography>
           
-          {resume.education.degrees.map(degree => (
-              <Typography variant="subtitle1">{degree.degree} in {degree.study}</Typography>
+          {resume.education.degrees.map((degree, i) => (
+              <Typography key={i} variant="subtitle1">{degree.degree} in {degree.study}</Typography>
           ))}
         </SkillsGridItem>
 
         <ExperienceGridItem gridArea='experience'>
           <Typography variant="h3">7+ years of experience</Typography>
           
-          {resume.experiences.map(experience => (
-            <Experience experience={experience} />
+          {resume.experiences.map((experience, i) => (
+            <Experience key={i} experience={experience} />
           ))}
         </ExperienceGridItem>
 

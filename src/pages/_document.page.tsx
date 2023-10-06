@@ -1,7 +1,7 @@
 /* istanbul ignore file: boilerplate and metadata */
 
 import createEmotionServer from '@emotion/server/create-instance';
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 import { createEmotionCache } from '../create-emotion-cache';
 import { theme } from '../theme';
@@ -12,9 +12,7 @@ export default class Document extends NextDocument {
       <Html lang='en'>
         <Head>
           {/* https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs */}
-          <link rel='icon' href='/favicon.ico' sizes='any' />
-          <link rel='icon' href='/icon/icon.svg' type='image/svg+xml' />
-          <link rel='apple-touch-icon' href='/icon/apple-touch-icon.png' />
+          <link rel='icon' href='/strong.png' sizes='any' />
           <link rel='manifest' href='/manifest.json' />
 
           {/* add to homescreen for ios */}
@@ -50,7 +48,7 @@ Document.getInitialProps = async (ctx) => {
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  // eslint-disable-next-line no-param-reassign
+   
   ctx.renderPage = async () =>
     originalRenderPage({
       enhanceApp: (App: any) => (props) => (
@@ -65,7 +63,7 @@ Document.getInitialProps = async (ctx) => {
   const emotionStyleTags = emotionStyles.styles.map(({ key, ids, css }) => (
     <style
       key={key}
-      // eslint-disable-next-line react/no-danger
+       
       dangerouslySetInnerHTML={{ __html: css }}
       data-emotion={`${key} ${ids.join(` `)}`}
     />

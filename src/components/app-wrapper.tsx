@@ -23,7 +23,7 @@ export const AppWrapper = ({
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <GlobalStyles
-          styles={(theme) => ({
+          styles={() => ({
             body: {
               position: `relative`,
             },

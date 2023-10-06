@@ -1,8 +1,8 @@
 import type { Theme } from '@emotion/react';
 import {
-  type SxProps,
   type Breakpoint,
   type Breakpoints,
+  type SxProps,
 } from '@mui/material/styles';
 import type { ResponsiveStyleValue, SystemStyleObject } from '@mui/system';
 
@@ -53,7 +53,7 @@ export const spreadable = (
           >
       >)
 > =>
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+   
   Array.isArray(sx) ? /* istanbul ignore next */ sx : [sx];
 
 export const hideScrollBars = {

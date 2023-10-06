@@ -1,16 +1,15 @@
-import { Experience as ExperienceType } from '../../types/resume';
-import { Card, Chip as MuiChip, ListItem, ListItemIcon, ListItemText, styled, Theme, Typography } from '@mui/material';
-import Box from '@mui/material/Box';
-import type { SxProps } from '@mui/material/styles';
-import { breakpointDown, fourthGap, gap, halfGap, sx } from '../../sx';
-import Image from 'next/image';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
-
+import { Card, Chip as MuiChip, ListItem, styled, Theme, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import type { SxProps } from '@mui/material/styles';
 import _ from 'lodash';
+import Image from 'next/image';
+
+import { breakpointDown, fourthGap, gap, halfGap, sx } from '../../sx';
+import { Experience as ExperienceType } from '../../types/resume';
 import { Divider } from '../divider';
 import { Link } from '../link';
-import List from '@mui/material/List';
 
 interface ExperienceProps {
   experience: ExperienceType;
@@ -51,14 +50,6 @@ const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"
 const formatDate = (date: Date) => {
     return `${month[date.getMonth()]} ${date.getFullYear()}`;
 }
-
-const StyledList = styled(List)({
-
-});
-
-const StyledListItem = styled(ListItem)({
-
-});
 
 const Chip = styled(MuiChip)(sx([
     (theme) => ({
@@ -107,19 +98,19 @@ export const Experience = ({
             </ExperienceHeader>
             <ExperienceBox>
                 <Typography variant="h3" sx={{ paddingBottom: halfGap }}>{experience.role}</Typography>
-                <Typography sx={{ paddingBottom: halfGap }}>{experience.description}</Typography>
+                <Typography>{experience.description}</Typography>
 
-                <List sx={{ }}>
-                    {experience.callouts.map(callout => (
-                        <ListItem sx={{ paddingY: 0, display: `list-item`, paddingLeft: 0, marginLeft: gap }}>
+                <List sx={{ listStyle: `circle` }}>
+                    {experience.callouts.map((callout, i) => (
+                        <ListItem key={i} sx={{ paddingY: 0, display: `list-item`, paddingLeft: 0, marginLeft: gap }}>
                             <Typography variant='subtitle1'>{callout}</Typography>
                         </ListItem>
                     ))}
                 </List>
 
                 <Box sx={{ display: `flex`, flexWrap: `wrap`}}>
-                    {sortedTechnologies.map(tech => (
-                        <Chip label={tech} sx={{ marginRight: fourthGap, marginBottom: fourthGap }} />
+                    {sortedTechnologies.map((tech, i) => (
+                        <Chip key={i} label={tech} sx={{ marginRight: fourthGap, marginBottom: fourthGap }} />
                     ))}
                 </Box>
             </ExperienceBox>

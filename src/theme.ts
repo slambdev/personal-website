@@ -4,13 +4,14 @@ import {
   type Theme as MuiTheme,
   type ThemeOptions,
 } from '@mui/material/styles';
+
 import { gap } from './sx';
 
 interface ColorHues {
   900: string;
 }
 
-// eslint-disable-next-line quotes
+ 
 declare module '@mui/material/styles' {
   interface Palette {
     gray: Palette[`grey`];
@@ -43,7 +44,7 @@ declare module '@mui/material/styles' {
     sx: Theme[`unstable_sx`];
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   interface ZIndex {
     background: number;
     body: number;
@@ -51,7 +52,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-// eslint-disable-next-line quotes
+ 
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     active: true;
@@ -60,14 +61,14 @@ declare module '@mui/material/Button' {
   }
 }
 
-// eslint-disable-next-line quotes
+ 
 declare module '@mui/material' {
   interface ButtonPropsColorOverrides {
     tertiary: true;
   }
 }
 
-// eslint-disable-next-line quotes
+ 
 declare module '@emotion/react' {
   interface Theme extends MuiTheme {}
 }
@@ -95,7 +96,7 @@ const green = {
 const backdrop = `${gray[900]}d9`;
 
 // Casting to force the correct Theme
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+ 
 const components = {
 } as ThemeOptions[`components`];
 /* eslint-enable @typescript-eslint/naming-convention */
