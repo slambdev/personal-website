@@ -82,7 +82,7 @@ export const Experience = ({
 
                 <Box sx={{ display: `flex`, flexWrap: `wrap`}}>
                     {sortedTechnologies.map(tech => (
-                        <Chip label={tech} sx={{ marginRight: halfGap, marginBottom: halfGap }} />
+                        <Chip label={tech} sx={{ marginRight: fourthGap, marginBottom: fourthGap }} />
                     ))}
                 </Box>
             </ExperienceBox>
