@@ -4,15 +4,17 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
+import { common } from '@mui/material/colors';
 import Container from '@mui/material/Container';
-import { styled, SxProps, Theme } from '@mui/material/styles';
+import { emphasize, styled, SxProps, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import _ from 'lodash';
 import { ReactNode } from 'react';
 
 import { Divider } from '../components/divider';
 import { Experience } from '../components/experience';
 import { resume } from '../data';
-import { breakpointDown, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
+import { breakpointDown, FlexBox, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
 
 export type GridArea = `contact` | `experience` | `education` | `interests`;
 
@@ -56,16 +58,16 @@ export const GridItem = ({ gridArea, ...props }: GridItemProps) => (
   />
 );
           
-const SkillsGridItem = styled(Box)(
+const SkillsGridItem = styled(FlexBox)(
   sx([
     {
-      display: `flex`,
       flexDirection: `column`,
       gridColumnStart: 1,
       gridColumnEnd: 3,
       gridRowStart: 1,
       gridRowEnd: 10,
       padding: gap,
+      alignItems: `start`,
     },
     breakpointDown(`md`, {
       gridColumnStart: 1,
@@ -76,10 +78,9 @@ const SkillsGridItem = styled(Box)(
   ]),
 );
 
-const ExperienceGridItem = styled(Box)(
+const ExperienceGridItem = styled(FlexBox)(
   sx([
     (theme) => ({
-      display: `flex`,
       flexDirection: `column`,
       gridColumnStart: 3,
       gridColumnEnd: 10,
@@ -101,10 +102,9 @@ const ExperienceGridItem = styled(Box)(
   ]),
 );
 
-const BottomGridItem = styled(Box)(
+const BottomGridItem = styled(FlexBox)(
   sx([
     (theme) => ({
-      display: `flex`,
       flexDirection: `column`,
       alignItems: `center`,
       gridColumnStart: 1,
@@ -119,34 +119,71 @@ const BottomGridItem = styled(Box)(
   ]),
 );
 
-export default function Home() {
-  return (
-    <Container fixed>
-      <Box sx={{ display: `flex`, justifyContent: `space-between` }}>
+const PrimaryChip = styled(Chip)(
+  sx([
+    (theme) => ({
+      border: `1px solid ${theme.palette.primary.main}`,
+      backgroundColor: emphasize(theme.palette.primary.main, 0.7),
+      color: common.black,
+    }),
+  ]),
+);
+
+const Intro = () => {
+  return(
+    <FlexBox sx={{ justifyContent: `space-between` }}>
         <Box>
             <Typography variant="h1">Shannen Lambdin</Typography>
-            <Box sx={[{ display: `flex`, flexDirection: `column` }]}>
+            <FlexBox sx={{ flexDirection: `column` }}>
               <Typography variant="h3" sx={{ paddingRight: halfGap }}>Senior Fullstack Engineer</Typography>
-              <Box sx={{ display: `flex`, paddingBottom: fourthGap, alignItems: `center` }}>
+              <FlexBox sx={{ paddingBottom: fourthGap, alignItems: `center` }}>
                 <Place fontSize='small' /> <Typography variant="h4">Raleigh, NC</Typography>
-              </Box>
-            </Box>
+              </FlexBox>
+            </FlexBox>
         </Box>
-        <Box sx={{ display: `flex`, flexDirection: `column`, justifyContent: `space-evenly` }}>
+        <FlexBox sx={{ flexDirection: `column`, justifyContent: `space-evenly` }}>
             <Chip clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
             <Chip clickable icon={<LinkedInIcon />} label="LinkedIn" component="a" href="https://www.linkedin.com/in/shannen-lambdin-90313850/" />
-        </Box>
-      </Box>
-            
-            
+        </FlexBox>
+      </FlexBox>
+  )
+}
+
+const Footer = () => {
+  return (
+      <BottomGridItem>
+          <Typography variant="h2" sx={{paddingBottom: gap}}>Congratulations! You scrolled all the way to the bottom!</Typography>
+          <Typography variant="h4" sx={{paddingBottom: gap}}>This must mean you&apos;re interested in stopping and having a chat. </Typography>
+          
+          <Button variant='outlined' color='secondary' size='small' startIcon={<SentimentVerySatisfiedIcon />} href='mailto:slambdin123@gmail.com'>Contact me</Button>
+      </BottomGridItem>
+  )
+}
+
+export default function Home() {
+  const sortedSkills: string[] = _.orderBy(resume.skills, [(skill: string) => skill.toLowerCase()], ['asc']);
+
+  return (
+    <Container fixed>
+      <Intro />
+
       <Divider />
 
       <GridRoot>
         <SkillsGridItem>
           <Typography variant="h3">Who I am & What I do</Typography>
-          <Typography variant="subtitle1" sx={{ paddingBottom: gap }}>{resume.tldr}</Typography>
+          <Typography variant="subtitle1">{resume.tldr}</Typography>
 
-          <Typography variant="h3">Education</Typography>
+          <Typography variant="h3" sx={{ paddingTop: gap }}>Skills</Typography>
+
+          <Box>
+            {sortedSkills.map((skill, i) => (
+                <PrimaryChip key={i} label={skill} sx={{ marginTop: halfGap, marginRight: halfGap }} color="primary" />
+            ))}
+          </Box>
+          
+
+          <Typography variant="h3" sx={{ paddingTop: gap }}>Education</Typography>
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.school} </Typography>
           <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.program} </Typography>
           
@@ -163,12 +200,7 @@ export default function Home() {
           ))}
         </ExperienceGridItem>
 
-        <BottomGridItem>
-          <Typography variant="h2" sx={{paddingBottom: gap}}>Congratulations! You scrolled all the way to the bottom!</Typography>
-          <Typography variant="h4" sx={{paddingBottom: gap}}>This must mean you&apos;re interested in stopping and having a chat. </Typography>
-          
-          <Button variant='outlined' color='primary' size='small' startIcon={<SentimentVerySatisfiedIcon />} href='mailto:slambdin123@gmail.com'>Contact me</Button>
-        </BottomGridItem>
+        <Footer />
       </GridRoot>
     </Container>
       

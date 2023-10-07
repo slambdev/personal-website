@@ -6,7 +6,7 @@ import type { SxProps } from '@mui/material/styles';
 import _ from 'lodash';
 import Image from 'next/image';
 
-import { breakpointDown, fourthGap, gap, halfGap, sx } from '../../sx';
+import { breakpointDown, FlexBox, fourthGap, gap, halfGap, sx } from '../../sx';
 import { Experience as ExperienceType } from '../../types/resume';
 import { Divider } from '../divider';
 import { Link } from '../link';
@@ -16,11 +16,10 @@ interface ExperienceProps {
   sx?: SxProps<Theme>;
 }
 
-const ExperienceWrapper = styled(Box)(
+const ExperienceWrapper = styled(FlexBox)(
     sx([
         (theme) => ({
             margin: theme.spacing(halfGap),
-            display: `flex`,
         }),
       ]),
     );
@@ -35,9 +34,8 @@ const ExperienceBox = styled(Card)(
       ]),
     );
 
-const ExperienceHeader = styled(Box)(sx([
+const ExperienceHeader = styled(FlexBox)(sx([
     {
-        display: `flex`,
         justifyContent: `space-between`,
         width: `100%`,
     },
@@ -62,6 +60,7 @@ const Chip = styled(MuiChip)(sx([
 const CompanyLogo = styled(Image)(sx([
     (theme) => ({
         backgroundColor: theme.palette.common.black,
+        borderRadius: halfGap,
     }),
   ]));
 
@@ -81,7 +80,7 @@ export const Experience = ({
         />
         <Box sx={{ width: `100%`}}>
             <ExperienceHeader>
-                <Box sx={{ display: `flex`, alignItems: `center` }}>
+                <FlexBox sx={{ alignItems: `center` }}>
                     <Typography variant="h5" sx={{ paddingLeft: gap, paddingRight: fourthGap }}>{experience.team ? `${experience.company} - ${experience.team}` : `${experience.company}`}</Typography>
                     { experience.link && 
                       <Link
@@ -93,7 +92,7 @@ export const Experience = ({
                     >
                         <OpenInNewIcon fontSize='small' />
                     </Link>}
-                </Box>
+                </FlexBox>
                 <Typography variant="h5" sx={{ paddingX: gap }}>{`${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`}</Typography>
             </ExperienceHeader>
             <ExperienceBox>
@@ -108,11 +107,11 @@ export const Experience = ({
                     ))}
                 </List>
 
-                <Box sx={{ display: `flex`, flexWrap: `wrap`}}>
+                <FlexBox sx={{ flexWrap: `wrap`}}>
                     {sortedTechnologies.map((tech, i) => (
                         <Chip key={i} label={tech} sx={{ marginRight: fourthGap, marginBottom: fourthGap }} />
                     ))}
-                </Box>
+                </FlexBox>
             </ExperienceBox>
 
         </Box>  

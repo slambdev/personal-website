@@ -43,7 +43,7 @@ export const resume: Resume = {
             endDate: new Date(2021, 6, 1),
             logoPath: `/ibm.png`,
             technologies: [
-                `Typescript`, `MongoDB`, `Redis`, `Bolt`, `NewRelic`, `LogDNA`, `Docker`, `Kubernetes`, `Watson Assistant`, `SQL Query`, `Cloud Object Storage (COS)`, `React`, `Travis`, `GitHub Actions`, `Artifactory`,
+                `PagerDuty`, `Typescript`, `MongoDB`, `Redis`, `Bolt`, `NewRelic`, `LogDNA`, `Docker`, `Kubernetes`, `Watson Assistant`, `SQL Query`, `Cloud Object Storage (COS)`, `React`, `Travis`, `GitHub Actions`, `Artifactory`,
             ],
             team: `Powerups@IBM`,
             callouts: [
@@ -117,7 +117,7 @@ export const resume: Resume = {
             },
             {
                 degree: `Minor`,
-                study: `Business Management`,
+                study: `Business management`,
             },
         ],
     },
@@ -127,12 +127,15 @@ export const resume: Resume = {
     },
     skills: [
         `Typescript`,
-        `Fullstack`,
         `DevOps`,
-        `React.Js`,
+        `React`,
         `NodeJS`,
-        `IBM Cloud`,
-        `AWS`,
+        `System architecture`,
+        `Incident management`,
+        `CI/CD`,
+        `Database management`,
+        `Project management`,
+        `Infrastructure management`, 
     ],
     interests: [],
     tldr: `I'm a heads-down get sh*t done engineer. I enjoy working with designers and product managers to implement the best user experience possible.`,

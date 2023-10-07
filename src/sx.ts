@@ -1,7 +1,9 @@
 import type { Theme } from '@emotion/react';
+import { Box } from '@mui/material';
 import {
   type Breakpoint,
   type Breakpoints,
+  styled,
   type SxProps,
 } from '@mui/material/styles';
 import type { ResponsiveStyleValue, SystemStyleObject } from '@mui/system';
@@ -59,3 +61,7 @@ export const spreadable = (
 export const hideScrollBars = {
   '::-webkit-scrollbar': { display: `none` },
 };
+
+export const FlexBox = styled(Box)({
+  display: `flex`,
+});
