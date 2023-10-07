@@ -26,6 +26,7 @@ export default class Document extends NextDocument {
           <meta name='msapplication-tap-highlight' content='no' />
 
           {/* Inject MUI styles first to match with `prepend: true` configuration. */}
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>

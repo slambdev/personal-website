@@ -33,7 +33,6 @@ export const resume: Resume = {
             callouts: [
                 `Top contributor of the codebase`,
                 `Conducted user research`,
-                `Maintained high quality `
             ],
         },
         {

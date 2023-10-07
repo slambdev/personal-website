@@ -165,7 +165,7 @@ export default function Home() {
 
         <BottomGridItem>
           <Typography variant="h2" sx={{paddingBottom: gap}}>Congratulations! You scrolled all the way to the bottom!</Typography>
-          <Typography variant="h4" sx={{paddingBottom: gap}}>This must  mean you're interested in stopping and having a chat. </Typography>
+          <Typography variant="h4" sx={{paddingBottom: gap}}>This must mean you&apos;re interested in stopping and having a chat. </Typography>
           
           <Button variant='outlined' color='primary' size='small' startIcon={<SentimentVerySatisfiedIcon />} href='mailto:slambdin123@gmail.com'>Contact me</Button>
         </BottomGridItem>
