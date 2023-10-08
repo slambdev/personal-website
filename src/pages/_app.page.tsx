@@ -39,7 +39,7 @@ const AppBase = ({ Component, pageProps }: AppProps) => {
         <meta name='description' content='Shannen Lambdin' />
         <meta
           name='viewport'
-          content='viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+          content='viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'
         />
       </Head>
 
