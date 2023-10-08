@@ -38,15 +38,19 @@ module.exports = () =>
       //   after compiling with ncc
       esmExternals: false,
     },
-    headers: [{
-      source: '/(.*)?', // Matches all pages
-      headers: [
-          {
-              key: 'X-Frame-Options',
-              value: 'DENY',
-          }
-      ],
-    }],
+    async headers() {
+      return [
+        {
+          source: '/(.*)?', // Matches all pages
+          headers: [
+              {
+                  key: 'X-Frame-Options',
+                  value: 'SAMEORIGIN',
+              }
+          ],
+        }
+      ]
+    },
 
     // Will be available on both server and client
     publicRuntimeConfig: {
