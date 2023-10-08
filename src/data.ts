@@ -23,7 +23,10 @@ export const resume: Resume = {
         `Unreal`,
         `GitHub Actions`,
       ],
-      callouts: [`2nd top contributor within a month of joining the team`],
+      callouts: [
+        `Pre-Series A employee`,
+        `2nd top contributor within a month of joining the team`,
+      ],
     },
     {
       company: `IBM`,
@@ -101,13 +104,14 @@ export const resume: Resume = {
       ],
       team: `Slack@IBM`,
       callouts: [
+        `Met regularly with enterprise team at Slack to evaluate roadmap, provide feedback on beta features and test new APIs`,
         `Used test driven development (TDD) to implement high quality code and minimize production bugs`,
         `Pair programmed with designers when implementing an internal website`,
       ],
     },
     {
       company: `Hudl`,
-      description: `Built out features for athlete newsfeeds such as reactions and helped make improvements to the Hudl iOS app.`,
+      description: `Built new features for athlete profiles, including newsfeeds with reactions, and updates to the iOS app that were rolled out to millions of users.`,
       role: `Full Stack Engineer Intern`,
       startDate: new Date(2015, 7, 1),
       endDate: new Date(2016, 6, 1),
@@ -169,5 +173,5 @@ export const resume: Resume = {
     `Infrastructure management`,
   ],
   interests: [],
-  tldr: `I'm a heads-down get sh*t done engineer. I enjoy working with designers and product managers to implement the best user experience possible.`,
+  tldr: `I'm a heads-down get sh*t done engineer. I enjoy working with designers and product managers to implement the best user experience possible. With a proven record of producing high quality code (and a lot of it) to meet stringent deadlines, I will be a great addition to your company.`,
 };
