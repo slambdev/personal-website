@@ -147,7 +147,7 @@ const Intro = () => {
         <Box>
             <Typography variant="h1">Shannen Lambdin</Typography>
             <FlexBox sx={{ flexDirection: `column` }}>
-              <Typography variant="h3" sx={{ paddingRight: halfGap }}>Senior Fullstack Engineer</Typography>
+              <Typography variant="h3" sx={{ paddingRight: halfGap, marginBottom: fourthGap }}>Senior Fullstack Engineer</Typography>
               <FlexBox sx={{ paddingBottom: fourthGap, alignItems: `center` }}>
                 <Place fontSize='small' /> <Typography variant="h4">Raleigh, NC</Typography>
               </FlexBox>
