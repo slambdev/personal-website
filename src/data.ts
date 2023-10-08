@@ -101,7 +101,7 @@ export const resume: Resume = {
       ],
       team: `Slack@IBM`,
       callouts: [
-        `Adopted a test driven development (TDD) mindset`,
+        `Used test driven development (TDD) to implement high quality code and minimize production bugs`,
         `Pair programmed with designers when implementing an internal website`,
       ],
     },
