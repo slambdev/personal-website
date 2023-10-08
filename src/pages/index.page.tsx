@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import { common } from '@mui/material/colors';
 import Container from '@mui/material/Container';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import { emphasize, styled, SxProps, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import _ from 'lodash';
@@ -266,16 +268,28 @@ const Skills = ({ skills }: { skills: string[] }) => {
       </Typography>
       <Typography
         variant='subtitle1'
-        sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
+        sx={{ paddingBottom: halfGap, fontStyle: `italic` }}
       >
         {resume.education.program}{' '}
       </Typography>
 
-      {resume.education.degrees.map((degree, i) => (
-        <Typography key={i} variant='subtitle1'>
-          {degree.degree} in {degree.study}
-        </Typography>
-      ))}
+      <List sx={{ listStyle: `circle`, paddingTop: 0 }}>
+        {resume.education.degrees.map((degree, i) => (
+          <ListItem
+            key={i}
+            sx={{
+              paddingY: 0,
+              display: `list-item`,
+              paddingLeft: 0,
+              marginLeft: gap,
+            }}
+          >
+            <Typography variant='subtitle1'>
+              {degree.degree} in {degree.study}
+            </Typography>
+          </ListItem>
+        ))}
+      </List>
     </SkillsGridItem>
   );
 };
