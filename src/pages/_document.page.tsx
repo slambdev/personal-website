@@ -1,6 +1,7 @@
 /* istanbul ignore file: boilerplate and metadata */
 
 import createEmotionServer from '@emotion/server/create-instance';
+import { randomBytes } from 'crypto';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 import { createEmotionCache } from '../create-emotion-cache';
@@ -8,9 +9,12 @@ import { theme } from '../theme';
 
 export default class Document extends NextDocument {
   render() {
+    const nonce = randomBytes(128).toString('base64')
+    const csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`
+
     return (
       <Html lang='en'>
-        <Head>
+        <Head nonce={nonce}>
           {/* https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs */}
           <link rel='icon' href='/strong.png' sizes='any' />
           <link rel='manifest' href='/manifest.json' />
@@ -25,13 +29,15 @@ export default class Document extends NextDocument {
           <meta name='format-detection' content='telephone=no' />
           <meta name='msapplication-tap-highlight' content='no' />
 
+          <meta httpEquiv="Content-Security-Policy" content={csp} />
+
           {/* Inject MUI styles first to match with `prepend: true` configuration. */}
           { }
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
           <Main />
-          <NextScript />
+          <NextScript nonce={nonce} />
         </body>
       </Html>
     );
