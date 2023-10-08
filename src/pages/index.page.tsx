@@ -129,9 +129,21 @@ const PrimaryChip = styled(Chip)(
   ]),
 );
 
+const IntroWrapper = styled(FlexBox)(
+  sx([
+    {
+      justifyContent: `space-between`,
+      marginBottom: halfGap,
+    },
+    breakpointDown(`sm`, {
+      flexDirection: `column`,
+    })
+  ])
+);
+
 const Intro = () => {
   return(
-    <FlexBox sx={{ justifyContent: `space-between` }}>
+    <IntroWrapper>
         <Box>
             <Typography variant="h1">Shannen Lambdin</Typography>
             <FlexBox sx={{ flexDirection: `column` }}>
@@ -142,10 +154,10 @@ const Intro = () => {
             </FlexBox>
         </Box>
         <FlexBox sx={{ flexDirection: `column`, justifyContent: `space-evenly` }}>
-            <Chip clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
+            <Chip sx={{ marginBottom: halfGap }} clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
             <Chip clickable icon={<LinkedInIcon />} label="LinkedIn" component="a" href="https://www.linkedin.com/in/shannen-lambdin-90313850/" />
         </FlexBox>
-      </FlexBox>
+      </IntroWrapper>
   )
 }
 
