@@ -36,9 +36,7 @@ module.exports = {
           match: true,
         },
       },
-      ...xoTsxOverrides.rules[`@typescript-eslint/naming-convention`].slice(
-        1,
-      ),
+      ...xoTsxOverrides.rules[`@typescript-eslint/naming-convention`].slice(1),
     ],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',

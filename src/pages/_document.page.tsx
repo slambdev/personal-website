@@ -9,8 +9,8 @@ import { theme } from '../theme';
 
 export default class Document extends NextDocument {
   render() {
-    const nonce = randomBytes(128).toString('base64')
-    let csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`
+    const nonce = randomBytes(128).toString('base64');
+    let csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`;
 
     // In dev we allow 'unsafe-eval', so HMR doesn't trigger the CSP
     if (process.env.NODE_ENV !== 'production') {
@@ -34,10 +34,10 @@ export default class Document extends NextDocument {
           <meta name='format-detection' content='telephone=no' />
           <meta name='msapplication-tap-highlight' content='no' />
 
-          <meta httpEquiv="Content-Security-Policy" content={csp} />
+          <meta httpEquiv='Content-Security-Policy' content={csp} />
 
           {/* Inject MUI styles first to match with `prepend: true` configuration. */}
-          { }
+          {}
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
@@ -60,7 +60,6 @@ Document.getInitialProps = async (ctx) => {
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-   
   ctx.renderPage = async () =>
     originalRenderPage({
       enhanceApp: (App: any) => (props) => (
@@ -75,7 +74,6 @@ Document.getInitialProps = async (ctx) => {
   const emotionStyleTags = emotionStyles.styles.map(({ key, ids, css }) => (
     <style
       key={key}
-       
       dangerouslySetInnerHTML={{ __html: css }}
       data-emotion={`${key} ${ids.join(` `)}`}
     />

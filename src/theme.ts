@@ -11,7 +11,6 @@ interface ColorHues {
   900: string;
 }
 
- 
 declare module '@mui/material/styles' {
   interface Palette {
     gray: Palette[`grey`];
@@ -44,7 +43,6 @@ declare module '@mui/material/styles' {
     sx: Theme[`unstable_sx`];
   }
 
-   
   interface ZIndex {
     background: number;
     body: number;
@@ -52,7 +50,6 @@ declare module '@mui/material/styles' {
   }
 }
 
- 
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     active: true;
@@ -61,14 +58,12 @@ declare module '@mui/material/Button' {
   }
 }
 
- 
 declare module '@mui/material' {
   interface ButtonPropsColorOverrides {
     tertiary: true;
   }
 }
 
- 
 declare module '@emotion/react' {
   interface Theme extends MuiTheme {}
 }
@@ -96,9 +91,8 @@ const green = {
 const backdrop = `${gray[900]}d9`;
 
 // Casting to force the correct Theme
- 
-const components = {
-} as ThemeOptions[`components`];
+
+const components = {} as ThemeOptions[`components`];
 /* eslint-enable @typescript-eslint/naming-convention */
 
 // A custom theme for this app

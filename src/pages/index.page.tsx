@@ -14,22 +14,32 @@ import { ReactNode } from 'react';
 import { Divider } from '../components/divider';
 import { Experience } from '../components/experience';
 import { resume } from '../data';
-import { breakpointDown, FlexBox, fourthGap, gap, halfGap, hideScrollBars, sx } from '../sx';
+import {
+  breakpointDown,
+  FlexBox,
+  fourthGap,
+  gap,
+  halfGap,
+  hideScrollBars,
+  sx,
+} from '../sx';
 
 export type GridArea = `contact` | `experience` | `education` | `interests`;
 
 export const GridRoot = styled(Box)(
-  sx([{
-    height: `100vh`,
-    maxHeight: `-webkit-fill-available`, // prevents overflow on iOS Safari
-    display: `grid`,
-    gridTemplateAreas: `
+  sx([
+    {
+      height: `100vh`,
+      maxHeight: `-webkit-fill-available`, // prevents overflow on iOS Safari
+      display: `grid`,
+      gridTemplateAreas: `
       'contact'
       'experience'
     `,
-    gridTemplateColumns: `auto`,
-    gridTemplateRows: `auto`,
-  }]),
+      gridTemplateColumns: `auto`,
+      gridTemplateRows: `auto`,
+    },
+  ]),
 );
 
 const StyledGridItem = styled(Box, {
@@ -52,12 +62,9 @@ export interface GridItemProps {
 }
 
 export const GridItem = ({ gridArea, ...props }: GridItemProps) => (
-  <StyledGridItem
-    gridArea={gridArea}
-    {...props}
-  />
+  <StyledGridItem gridArea={gridArea} {...props} />
 );
-          
+
 const SkillsGridItem = styled(FlexBox)(
   sx([
     {
@@ -137,43 +144,78 @@ const IntroWrapper = styled(FlexBox)(
     },
     breakpointDown(`sm`, {
       flexDirection: `column`,
-    })
-  ])
+    }),
+  ]),
 );
 
 const Intro = () => {
-  return(
+  return (
     <IntroWrapper>
-        <Box>
-            <Typography variant="h1">Shannen Lambdin</Typography>
-            <FlexBox sx={{ flexDirection: `column` }}>
-              <Typography variant="h3" sx={{ paddingRight: halfGap, marginBottom: fourthGap }}>Senior Fullstack Engineer</Typography>
-              <FlexBox sx={{ paddingBottom: fourthGap, alignItems: `center` }}>
-                <Place fontSize='small' /> <Typography variant="h4">Raleigh, NC</Typography>
-              </FlexBox>
-            </FlexBox>
-        </Box>
-        <FlexBox sx={{ flexDirection: `column`, justifyContent: `space-evenly` }}>
-            <Chip sx={{ marginBottom: halfGap }} clickable icon={<SentimentVerySatisfiedIcon />} label="Contact me" component="a" href="mailto:slambdin123@gmail.com" />
-            <Chip clickable icon={<LinkedInIcon />} label="LinkedIn" component="a" href="https://www.linkedin.com/in/shannen-lambdin-90313850/" />
+      <Box>
+        <Typography variant='h1'>Shannen Lambdin</Typography>
+        <FlexBox sx={{ flexDirection: `column` }}>
+          <Typography
+            variant='h3'
+            sx={{ paddingRight: halfGap, marginBottom: fourthGap }}
+          >
+            Senior Fullstack Engineer
+          </Typography>
+          <FlexBox sx={{ paddingBottom: fourthGap, alignItems: `center` }}>
+            <Place fontSize='small' />{' '}
+            <Typography variant='h4'>Raleigh, NC</Typography>
+          </FlexBox>
         </FlexBox>
-      </IntroWrapper>
-  )
-}
+      </Box>
+      <FlexBox sx={{ flexDirection: `column`, justifyContent: `space-evenly` }}>
+        <Chip
+          sx={{ marginBottom: halfGap }}
+          clickable
+          icon={<SentimentVerySatisfiedIcon />}
+          label='Contact me'
+          component='a'
+          href='mailto:slambdin123@gmail.com'
+        />
+        <Chip
+          clickable
+          icon={<LinkedInIcon />}
+          label='LinkedIn'
+          component='a'
+          href='https://www.linkedin.com/in/shannen-lambdin-90313850/'
+        />
+      </FlexBox>
+    </IntroWrapper>
+  );
+};
 
 const Footer = () => {
   return (
-      <BottomGridItem>
-          <Typography variant="h2" sx={{paddingBottom: gap}}>Congratulations! You scrolled all the way to the bottom!</Typography>
-          <Typography variant="h4" sx={{paddingBottom: gap}}>This must mean you&apos;re interested in stopping and having a chat. </Typography>
-          
-          <Button variant='outlined' color='secondary' size='small' startIcon={<SentimentVerySatisfiedIcon />} href='mailto:slambdin123@gmail.com'>Contact me</Button>
-      </BottomGridItem>
-  )
-}
+    <BottomGridItem>
+      <Typography variant='h2' sx={{ paddingBottom: gap }}>
+        Congratulations! You scrolled all the way to the bottom!
+      </Typography>
+      <Typography variant='h4' sx={{ paddingBottom: gap }}>
+        This must mean you&apos;re interested in stopping and having a chat.{' '}
+      </Typography>
+
+      <Button
+        variant='outlined'
+        color='secondary'
+        size='small'
+        startIcon={<SentimentVerySatisfiedIcon />}
+        href='mailto:slambdin123@gmail.com'
+      >
+        Contact me
+      </Button>
+    </BottomGridItem>
+  );
+};
 
 export default function Home() {
-  const sortedSkills: string[] = _.orderBy(resume.skills, [(skill: string) => skill.toLowerCase()], ['asc']);
+  const sortedSkills: string[] = _.orderBy(
+    resume.skills,
+    [(skill: string) => skill.toLowerCase()],
+    ['asc'],
+  );
 
   return (
     <Container fixed>
@@ -183,30 +225,50 @@ export default function Home() {
 
       <GridRoot>
         <SkillsGridItem>
-          <Typography variant="h3">Who I am & What I do</Typography>
-          <Typography variant="subtitle1">{resume.tldr}</Typography>
+          <Typography variant='h3'>Who I am & What I do</Typography>
+          <Typography variant='subtitle1'>{resume.tldr}</Typography>
 
-          <Typography variant="h3" sx={{ paddingTop: gap }}>Skills</Typography>
+          <Typography variant='h3' sx={{ paddingTop: gap }}>
+            Skills
+          </Typography>
 
           <Box>
             {sortedSkills.map((skill, i) => (
-                <PrimaryChip key={i} label={skill} sx={{ marginTop: halfGap, marginRight: halfGap }} color="primary" />
+              <PrimaryChip
+                key={i}
+                label={skill}
+                sx={{ marginTop: halfGap, marginRight: halfGap }}
+                color='primary'
+              />
             ))}
           </Box>
-          
 
-          <Typography variant="h3" sx={{ paddingTop: gap }}>Education</Typography>
-          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.school} </Typography>
-          <Typography variant="subtitle1" sx={{ paddingBottom: halfGap, fontWeight: `bold` }}>{resume.education.program} </Typography>
-          
+          <Typography variant='h3' sx={{ paddingTop: gap }}>
+            Education
+          </Typography>
+          <Typography
+            variant='subtitle1'
+            sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
+          >
+            {resume.education.school}{' '}
+          </Typography>
+          <Typography
+            variant='subtitle1'
+            sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
+          >
+            {resume.education.program}{' '}
+          </Typography>
+
           {resume.education.degrees.map((degree, i) => (
-              <Typography key={i} variant="subtitle1">{degree.degree} in {degree.study}</Typography>
+            <Typography key={i} variant='subtitle1'>
+              {degree.degree} in {degree.study}
+            </Typography>
           ))}
         </SkillsGridItem>
 
         <ExperienceGridItem gridArea='experience'>
-          <Typography variant="h3">7+ years of experience</Typography>
-          
+          <Typography variant='h3'>7+ years of experience</Typography>
+
           {resume.experiences.map((experience, i) => (
             <Experience key={i} experience={experience} />
           ))}
@@ -215,6 +277,5 @@ export default function Home() {
         <Footer />
       </GridRoot>
     </Container>
-      
-  )
+  );
 }

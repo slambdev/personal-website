@@ -54,9 +54,7 @@ export const spreadable = (
             SystemStyleObject | ResponsiveStyleValue<number | string>
           >
       >)
-> =>
-   
-  Array.isArray(sx) ? /* istanbul ignore next */ sx : [sx];
+> => (Array.isArray(sx) ? /* istanbul ignore next */ sx : [sx]);
 
 export const hideScrollBars = {
   '::-webkit-scrollbar': { display: `none` },
