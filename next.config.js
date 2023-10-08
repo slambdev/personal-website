@@ -46,6 +46,14 @@ module.exports = () =>
               {
                   key: 'X-Frame-Options',
                   value: 'SAMEORIGIN',
+              },
+              {
+                key: 'X-XSS-Protection',
+                value: 0,
+              },
+              {
+                key: 'X-Content-Type-Options',
+                value: 'nosniff'
               }
           ],
         }
