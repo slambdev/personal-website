@@ -1,4 +1,4 @@
-import { Place } from '@mui/icons-material';
+import { GitHub, Place } from '@mui/icons-material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import Box from '@mui/material/Box';
@@ -167,21 +167,39 @@ const Intro = () => {
         </FlexBox>
       </Box>
       <FlexBox sx={{ flexDirection: `column`, justifyContent: `space-evenly` }}>
-        <Chip
-          sx={{ marginBottom: halfGap }}
-          clickable
-          icon={<SentimentVerySatisfiedIcon />}
-          label='Contact me'
-          component='a'
+        <Button
+          variant='outlined'
+          color='secondary'
+          size='small'
+          startIcon={<SentimentVerySatisfiedIcon />}
           href='mailto:slambdin123@gmail.com'
-        />
-        <Chip
-          clickable
-          icon={<LinkedInIcon />}
-          label='LinkedIn'
-          component='a'
-          href='https://www.linkedin.com/in/shannen-lambdin-90313850/'
-        />
+          sx={{ marginY: halfGap }}
+        >
+          Contact me
+        </Button>
+
+        <FlexBox>
+          <Button
+            variant='text'
+            color='secondary'
+            size='small'
+            startIcon={<LinkedInIcon />}
+            href='https://www.linkedin.com/in/shannen-lambdin-90313850/'
+          >
+            LinkedIn
+          </Button>
+
+          <Button
+            variant='text'
+            color='secondary'
+            size='small'
+            startIcon={<GitHub />}
+            href='https://github.com/slambdev'
+            sx={{ marginLeft: gap }}
+          >
+            GitHub
+          </Button>
+        </FlexBox>
       </FlexBox>
     </IntroWrapper>
   );
@@ -210,13 +228,59 @@ const Footer = () => {
   );
 };
 
-export default function Home() {
+const Skills = ({ skills }: { skills: string[] }) => {
   const sortedSkills: string[] = _.orderBy(
-    resume.skills,
+    skills,
     [(skill: string) => skill.toLowerCase()],
     ['asc'],
   );
 
+  return (
+    <SkillsGridItem>
+      <Typography variant='h3'>Who I am & What I do</Typography>
+      <Typography variant='subtitle1'>{resume.tldr}</Typography>
+
+      <Typography variant='h3' sx={{ paddingTop: gap }}>
+        Skills
+      </Typography>
+
+      <Box>
+        {sortedSkills.map((skill, i) => (
+          <PrimaryChip
+            key={i}
+            label={skill}
+            sx={{ marginTop: halfGap, marginRight: halfGap }}
+            color='primary'
+          />
+        ))}
+      </Box>
+
+      <Typography variant='h3' sx={{ paddingTop: gap }}>
+        Education
+      </Typography>
+      <Typography
+        variant='subtitle1'
+        sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
+      >
+        {resume.education.school}{' '}
+      </Typography>
+      <Typography
+        variant='subtitle1'
+        sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
+      >
+        {resume.education.program}{' '}
+      </Typography>
+
+      {resume.education.degrees.map((degree, i) => (
+        <Typography key={i} variant='subtitle1'>
+          {degree.degree} in {degree.study}
+        </Typography>
+      ))}
+    </SkillsGridItem>
+  );
+};
+
+export default function Home() {
   return (
     <Container fixed>
       <Intro />
@@ -224,47 +288,7 @@ export default function Home() {
       <Divider />
 
       <GridRoot>
-        <SkillsGridItem>
-          <Typography variant='h3'>Who I am & What I do</Typography>
-          <Typography variant='subtitle1'>{resume.tldr}</Typography>
-
-          <Typography variant='h3' sx={{ paddingTop: gap }}>
-            Skills
-          </Typography>
-
-          <Box>
-            {sortedSkills.map((skill, i) => (
-              <PrimaryChip
-                key={i}
-                label={skill}
-                sx={{ marginTop: halfGap, marginRight: halfGap }}
-                color='primary'
-              />
-            ))}
-          </Box>
-
-          <Typography variant='h3' sx={{ paddingTop: gap }}>
-            Education
-          </Typography>
-          <Typography
-            variant='subtitle1'
-            sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
-          >
-            {resume.education.school}{' '}
-          </Typography>
-          <Typography
-            variant='subtitle1'
-            sx={{ paddingBottom: halfGap, fontWeight: `bold` }}
-          >
-            {resume.education.program}{' '}
-          </Typography>
-
-          {resume.education.degrees.map((degree, i) => (
-            <Typography key={i} variant='subtitle1'>
-              {degree.degree} in {degree.study}
-            </Typography>
-          ))}
-        </SkillsGridItem>
+        <Skills skills={resume.skills} />
 
         <ExperienceGridItem gridArea='experience'>
           <Typography variant='h3'>7+ years of experience</Typography>
