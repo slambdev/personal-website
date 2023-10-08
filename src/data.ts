@@ -27,7 +27,7 @@ export const resume: Resume = {
     },
     {
       company: `IBM`,
-      description: `Built an AI platform to help users easily integrate AI into their pipelines with off the shelf solutions.`,
+      description: `Built an integration platform to help users build and deploy data pipelines with off the shelf AI components using low code/no code.`,
       role: `Senior Fullstack Engineer`,
       startDate: new Date(2021, 6, 1),
       endDate: new Date(2023, 1, 1),
@@ -49,7 +49,7 @@ export const resume: Resume = {
     },
     {
       company: `IBM`,
-      description: `Lead a team of engineers in building and managing systems that integrated between platforms such as Slack, PagerDuty, and GitHub with internal systems.`,
+      description: `Lead a team of engineers in building and managing systems that integrated platforms such as Slack, PagerDuty, and GitHub with internal systems.`,
       role: `Full Stack Engineer and Team Lead`,
       startDate: new Date(2018, 1, 1),
       endDate: new Date(2021, 6, 1),
@@ -76,7 +76,7 @@ export const resume: Resume = {
       callouts: [
         `Top contributor of the codebase`,
         `Acting project manager and managed the backlog`,
-        `Lead team meetings like retrospectives, team health checks, and post-mortems`,
+        `Lead Scrum events`,
         `Instrumented monitoring and alerting with various third party tools`,
       ],
     },
@@ -100,11 +100,14 @@ export const resume: Resume = {
         `Docker`,
       ],
       team: `Slack@IBM`,
-      callouts: [],
+      callouts: [
+        `Adopted a test driven development (TDD) mindset`,
+        `Pair programmed with designers when implementing an internal website`,
+      ],
     },
     {
       company: `Hudl`,
-      description: `Built out features for athlete’s newsfeeds such as reactions and helped make improvements to the Hudl iOS app.`,
+      description: `Built out features for athlete newsfeeds such as reactions and helped make improvements to the Hudl iOS app.`,
       role: `Full Stack Engineer Intern`,
       startDate: new Date(2015, 7, 1),
       endDate: new Date(2016, 6, 1),
