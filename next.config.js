@@ -49,7 +49,7 @@ module.exports = () =>
               },
               {
                 key: 'X-XSS-Protection',
-                value: 0,
+                value: `0`,
               },
               {
                 key: 'X-Content-Type-Options',

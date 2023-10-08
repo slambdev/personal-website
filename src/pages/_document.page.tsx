@@ -10,7 +10,12 @@ import { theme } from '../theme';
 export default class Document extends NextDocument {
   render() {
     const nonce = randomBytes(128).toString('base64')
-    const csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`
+    let csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`
+
+    // In dev we allow 'unsafe-eval', so HMR doesn't trigger the CSP
+    if (process.env.NODE_ENV !== 'production') {
+      csp += ` 'unsafe-eval'`;
+    }
 
     return (
       <Html lang='en'>
