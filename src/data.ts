@@ -22,6 +22,7 @@ export const resume: Resume = {
         `GraphQL`,
         `Unreal`,
         `GitHub Actions`,
+        `Storybook`,
       ],
       callouts: [
         `Pre-Series A employee`,
@@ -45,6 +46,7 @@ export const resume: Resume = {
         `React`,
         `Mobx`,
         `Docker`,
+        `Storybook`,
       ],
       team: `ConveyorAI`,
       link: `https://conveyorai.com/`,
