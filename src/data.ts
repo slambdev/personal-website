@@ -5,7 +5,7 @@ export const resume: Resume = {
     {
       company: `Showrunner`,
       link: `https://showrunner.tech/`,
-      description: `Built an integrated platform to help studios coordinate and manage their physical and virtual sets.`,
+      description: `Built an integrated platform to help studios coordinate and manage their physical and virtual sets, integrating with Unreal Engine using RCAPI.`,
       role: `Senior Fullstack Engineer`,
       startDate: new Date(2023, 1, 1),
       endDate: new Date(2023, 8, 1),
