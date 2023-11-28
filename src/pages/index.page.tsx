@@ -160,7 +160,7 @@ const Intro = () => {
             variant='h3'
             sx={{ paddingRight: halfGap, marginBottom: fourthGap }}
           >
-            Senior Fullstack Engineer
+            Staff Fullstack Engineer
           </Typography>
           <FlexBox sx={{ paddingBottom: fourthGap, alignItems: `center` }}>
             <Place fontSize='small' />{' '}
